@@ -25,6 +25,7 @@ class ExperienceController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'is_current' => 'boolean',
+            'type' => 'required|in:work,organization,speaker',
         ]);
 
         $experience = Experience::create($data);
@@ -45,6 +46,7 @@ class ExperienceController extends Controller
             'start_date' => 'sometimes|required|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'is_current' => 'boolean',
+            'type' => 'sometimes|required|in:work,organization,speaker',
         ]);
 
         $experience->update($data);

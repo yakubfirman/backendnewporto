@@ -87,6 +87,7 @@ class DummySeeder extends Seeder
             'start_date' => '2024-01-01',
             'end_date' => null,
             'is_current' => true,
+            'type' => 'work',
         ]);
 
         Experience::create([
@@ -96,6 +97,7 @@ class DummySeeder extends Seeder
             'start_date' => '2022-06-01',
             'end_date' => '2023-12-31',
             'is_current' => false,
+            'type' => 'work',
         ]);
 
         Experience::create([
@@ -105,6 +107,17 @@ class DummySeeder extends Seeder
             'start_date' => '2023-01-01',
             'end_date' => null,
             'is_current' => true,
+            'type' => 'speaker',
+        ]);
+
+        Experience::create([
+            'title' => 'Ketua Divisi IT',
+            'company' => 'Himpunan Mahasiswa Teknik Informatika',
+            'description' => 'Bertanggung jawab atas pengelolaan infrastruktur IT kampus dan menyelenggarakan acara teknologi tahunan.',
+            'start_date' => '2023-08-01',
+            'end_date' => '2024-08-01',
+            'is_current' => false,
+            'type' => 'organization',
         ]);
 
         // ============================================================
