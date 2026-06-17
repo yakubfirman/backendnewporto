@@ -18,10 +18,10 @@ class DummySeeder extends Seeder
         // PROJECTS
         // ============================================================
         Project::create([
-            'title' => 'E-Commerce Platform',
-            'slug' => 'e-commerce-platform',
-            'description' => 'A full-featured e-commerce platform built with Next.js and Laravel, featuring real-time inventory, payment gateway integration, and admin dashboard.',
-            'content' => '<h2>Project Overview</h2><p>This e-commerce platform was built from the ground up to handle thousands of daily transactions. It features a headless architecture with Next.js for the storefront and Laravel as the backend API.</p><h2>Key Features</h2><ul><li>Real-time inventory management</li><li>Multiple payment gateway integration (Midtrans, Stripe)</li><li>Advanced product search and filtering</li><li>Customer review and rating system</li><li>Admin dashboard with analytics</li></ul><h2>Technical Challenges</h2><p>One of the main challenges was implementing real-time stock updates across multiple concurrent users. We solved this using database-level locking and WebSocket notifications.</p>',
+            'title' => 'Platform E-Commerce',
+            'slug' => 'platform-e-commerce',
+            'description' => 'Platform e-commerce berfitur lengkap yang dibangun dengan Next.js dan Laravel, menampilkan inventaris waktu nyata, integrasi gateway pembayaran, dan dasbor admin.',
+            'content' => '<h2>Ikhtisar Proyek</h2><p>Platform e-commerce ini dibangun dari awal untuk menangani ribuan transaksi harian. Menampilkan arsitektur headless dengan Next.js untuk etalase dan Laravel sebagai API backend.</p><h2>Fitur Utama</h2><ul><li>Manajemen inventaris waktu nyata</li><li>Integrasi beberapa gateway pembayaran (Midtrans, Stripe)</li><li>Pencarian dan pemfilteran produk tingkat lanjut</li><li>Sistem ulasan dan peringkat pelanggan</li><li>Dasbor admin dengan analitik</li></ul><h2>Tantangan Teknis</h2><p>Salah satu tantangan utama adalah mengimplementasikan pembaruan stok waktu nyata di banyak pengguna bersamaan. Kami menyelesaikannya menggunakan penguncian tingkat database dan notifikasi WebSocket.</p>',
             'image' => null,
             'tech_stack' => ['Next.js', 'Laravel', 'MySQL', 'Tailwind CSS', 'Midtrans'],
             'url' => 'https://example-shop.com',
@@ -30,10 +30,10 @@ class DummySeeder extends Seeder
         ]);
 
         Project::create([
-            'title' => 'Fintech Dashboard',
-            'slug' => 'fintech-dashboard',
-            'description' => 'Modern financial technology dashboard with real-time data visualization, transaction monitoring, and comprehensive reporting tools.',
-            'content' => '<h2>About This Project</h2><p>A comprehensive fintech dashboard designed for a financial startup. The dashboard provides real-time monitoring of transactions, user analytics, and financial reports.</p><h2>Features</h2><ul><li>Real-time transaction monitoring</li><li>Interactive charts and data visualization</li><li>Role-based access control</li><li>Automated report generation (PDF/Excel)</li><li>Dark mode support</li></ul>',
+            'title' => 'Dasbor Fintech',
+            'slug' => 'dasbor-fintech',
+            'description' => 'Dasbor teknologi keuangan modern dengan visualisasi data waktu nyata, pemantauan transaksi, dan alat pelaporan komprehensif.',
+            'content' => '<h2>Tentang Proyek Ini</h2><p>Dasbor fintech komprehensif yang dirancang untuk startup keuangan. Dasbor ini menyediakan pemantauan transaksi waktu nyata, analitik pengguna, dan laporan keuangan.</p><h2>Fitur</h2><ul><li>Pemantauan transaksi waktu nyata</li><li>Grafik interaktif dan visualisasi data</li><li>Kontrol akses berbasis peran</li><li>Pembuatan laporan otomatis (PDF/Excel)</li><li>Dukungan mode gelap</li></ul>',
             'image' => null,
             'tech_stack' => ['React', 'TypeScript', 'Chart.js', 'Node.js', 'PostgreSQL'],
             'url' => 'https://fintech-demo.com',
@@ -42,10 +42,10 @@ class DummySeeder extends Seeder
         ]);
 
         Project::create([
-            'title' => 'SaaS Landing Page',
-            'slug' => 'saas-landing-page',
-            'description' => 'High-converting SaaS landing page with SEO optimization, achieving 95+ PageSpeed score and top 3 Google rankings.',
-            'content' => '<h2>Project Goal</h2><p>The client needed a landing page that not only looked beautiful but also ranked high on Google for their target keywords. We delivered a page with a 98 PageSpeed Insight score.</p><h2>SEO Strategy</h2><ul><li>Semantic HTML5 structure</li><li>JSON-LD Schema Markup</li><li>Optimized Core Web Vitals (LCP, FID, CLS)</li><li>Server-Side Rendering for instant content delivery</li></ul>',
+            'title' => 'Halaman Landas SaaS',
+            'slug' => 'halaman-landas-saas',
+            'description' => 'Halaman landas SaaS berkonversi tinggi dengan optimasi SEO, mencapai skor PageSpeed 95+ dan peringkat 3 besar Google.',
+            'content' => '<h2>Tujuan Proyek</h2><p>Klien membutuhkan halaman landas yang tidak hanya terlihat indah tetapi juga mendapat peringkat tinggi di Google untuk kata kunci target mereka. Kami memberikan halaman dengan skor 98 PageSpeed Insight.</p><h2>Strategi SEO</h2><ul><li>Struktur HTML5 semantik</li><li>Markup Skema JSON-LD</li><li>Core Web Vitals yang Dioptimalkan (LCP, FID, CLS)</li><li>Server-Side Rendering untuk pengiriman konten instan</li></ul>',
             'image' => null,
             'tech_stack' => ['Next.js', 'Tailwind CSS', 'Vercel', 'SEO'],
             'url' => 'https://saas-example.com',
@@ -54,10 +54,10 @@ class DummySeeder extends Seeder
         ]);
 
         Project::create([
-            'title' => 'Restaurant POS System',
-            'slug' => 'restaurant-pos-system',
-            'description' => 'Point-of-sale system for restaurant chain with kitchen display, order management, and real-time reporting.',
-            'content' => '<h2>Overview</h2><p>Built a custom POS system for a growing restaurant chain in Central Java. The system handles order management, kitchen display screens, and generates daily financial reports.</p><h2>Features</h2><ul><li>Touchscreen-optimized order interface</li><li>Kitchen display system (KDS)</li><li>Table management and reservation</li><li>Daily sales and inventory reports</li><li>Multi-branch support</li></ul>',
+            'title' => 'Sistem POS Restoran',
+            'slug' => 'sistem-pos-restoran',
+            'description' => 'Sistem point-of-sale untuk jaringan restoran dengan tampilan dapur, manajemen pesanan, dan pelaporan waktu nyata.',
+            'content' => '<h2>Ikhtisar</h2><p>Membangun sistem POS kustom untuk jaringan restoran yang berkembang di Jawa Tengah. Sistem menangani manajemen pesanan, layar tampilan dapur, dan menghasilkan laporan keuangan harian.</p><h2>Fitur</h2><ul><li>Antarmuka pesanan yang dioptimalkan untuk layar sentuh</li><li>Sistem tampilan dapur (KDS)</li><li>Manajemen meja dan reservasi</li><li>Laporan penjualan dan inventaris harian</li><li>Dukungan multi-cabang</li></ul>',
             'image' => null,
             'tech_stack' => ['Laravel', 'Vue.js', 'MySQL', 'Electron'],
             'url' => null,
@@ -66,10 +66,10 @@ class DummySeeder extends Seeder
         ]);
 
         Project::create([
-            'title' => 'Corporate Website Redesign',
-            'slug' => 'corporate-website-redesign',
-            'description' => 'Complete redesign of a corporate website with modern UI, improved UX, and comprehensive SEO overhaul resulting in 3x organic traffic.',
-            'content' => '<h2>The Challenge</h2><p>The client\'s old website was outdated, slow, and barely visible on search engines. They needed a complete overhaul that would modernize their online presence and drive organic traffic.</p><h2>Results</h2><ul><li>3x increase in organic traffic within 3 months</li><li>PageSpeed score improved from 32 to 96</li><li>Bounce rate decreased by 45%</li><li>Average session duration increased by 60%</li></ul>',
+            'title' => 'Desain Ulang Website Perusahaan',
+            'slug' => 'desain-ulang-website-perusahaan',
+            'description' => 'Desain ulang lengkap website perusahaan dengan UI modern, peningkatan UX, dan perombakan SEO komprehensif yang menghasilkan 3x lalu lintas organik.',
+            'content' => '<h2>Tantangan</h2><p>Situs web lama klien tertinggal, lambat, dan hampir tidak terlihat di mesin pencari. Mereka membutuhkan perombakan total yang akan memodernisasi kehadiran online mereka dan mendorong lalu lintas organik.</p><h2>Hasil</h2><ul><li>Peningkatan 3x lalu lintas organik dalam 3 bulan</li><li>Skor PageSpeed meningkat dari 32 menjadi 96</li><li>Rasio pentalan menurun sebesar 45%</li><li>Rata-rata durasi sesi meningkat sebesar 60%</li></ul>',
             'image' => null,
             'tech_stack' => ['Next.js', 'Tailwind CSS', 'Laravel', 'SEO'],
             'url' => 'https://corporate-demo.com',
@@ -83,7 +83,7 @@ class DummySeeder extends Seeder
         Experience::create([
             'title' => 'Full-stack Web Developer',
             'company' => 'Navyra Studio',
-            'description' => 'Leading web development projects using Laravel and Next.js. Building headless CMS architectures, designing RESTful APIs, and optimizing web performance for various clients.',
+            'description' => 'Memimpin proyek pengembangan web menggunakan Laravel dan Next.js. Membangun arsitektur CMS headless, merancang API RESTful, dan mengoptimalkan performa web untuk berbagai klien.',
             'start_date' => '2024-01-01',
             'end_date' => null,
             'is_current' => true,
@@ -92,7 +92,7 @@ class DummySeeder extends Seeder
         Experience::create([
             'title' => 'Web Developer & SEO Specialist',
             'company' => 'Freelance',
-            'description' => 'Delivering full-stack web solutions for SMEs across Indonesia. Handling end-to-end development from UI/UX design to deployment and SEO optimization.',
+            'description' => 'Memberikan solusi web full-stack untuk UKM di seluruh Indonesia. Menangani pengembangan end-to-end mulai dari desain UI/UX hingga penerapan dan optimasi SEO.',
             'start_date' => '2022-06-01',
             'end_date' => '2023-12-31',
             'is_current' => false,
@@ -101,7 +101,7 @@ class DummySeeder extends Seeder
         Experience::create([
             'title' => 'Speaker & Mentor',
             'company' => 'Tech Community Surakarta',
-            'description' => 'Regular speaker at seminars and workshops on media literacy, frontend web development, and modern web technologies. Mentored junior developers in the local tech community.',
+            'description' => 'Pembicara rutin di seminar dan workshop tentang literasi media, pengembangan web frontend, dan teknologi web modern. Membimbing developer junior di komunitas teknologi lokal.',
             'start_date' => '2023-01-01',
             'end_date' => null,
             'is_current' => true,
@@ -113,7 +113,7 @@ class DummySeeder extends Seeder
         Education::create([
             'degree' => 'Sarjana Komputer (S.Kom) - Teknik Informatika',
             'institution' => 'Universitas Duta Bangsa Surakarta',
-            'description' => 'Focused on Software Engineering, Web Technologies, and Artificial Intelligence. Active in campus tech community.',
+            'description' => 'Fokus pada Rekayasa Perangkat Lunak, Teknologi Web, dan Kecerdasan Buatan. Aktif di komunitas teknologi kampus.',
             'start_date' => '2022-09-01',
             'end_date' => '2026-07-01',
             'is_current' => false,
@@ -123,30 +123,30 @@ class DummySeeder extends Seeder
         // BLOG POSTS
         // ============================================================
         Post::create([
-            'title' => 'Getting Started with Headless CMS: Laravel + Next.js',
-            'slug' => 'getting-started-headless-cms-laravel-nextjs',
-            'excerpt' => 'Learn how to build a modern, scalable web architecture by separating your frontend and backend using Laravel as an API and Next.js as the UI layer.',
-            'content' => '<h2>What is a Headless CMS?</h2><p>A headless CMS is a content management system that provides content through an API, without a built-in frontend layer. This gives developers the freedom to use any frontend framework while keeping the content management experience simple for editors.</p><h2>Why Laravel + Next.js?</h2><p>Laravel excels at building robust APIs with features like Eloquent ORM, built-in authentication (Sanctum), and an excellent ecosystem. Next.js, on the other hand, provides server-side rendering, static site generation, and an amazing developer experience.</p><h2>Setting Up Laravel as an API</h2><p>First, create a new Laravel project and configure it for API-only mode. Install Sanctum for authentication and set up your models and migrations.</p><pre><code>composer create-project laravel/laravel backend\ncd backend\nphp artisan install:api</code></pre><h2>Building the Next.js Frontend</h2><p>Create your Next.js app and set up the data fetching layer. Use Server Components for SEO-critical pages and Client Components for interactive elements.</p><pre><code>npx create-next-app@latest frontend\ncd frontend\nnpm run dev</code></pre><h2>Conclusion</h2><p>The headless approach gives you the best of both worlds: a powerful content management backend and a blazing-fast, SEO-optimized frontend. It\'s the architecture of the future.</p>',
+            'title' => 'Memulai dengan Headless CMS: Laravel + Next.js',
+            'slug' => 'memulai-dengan-headless-cms-laravel-nextjs',
+            'excerpt' => 'Pelajari cara membangun arsitektur web yang modern dan terukur dengan memisahkan frontend dan backend menggunakan Laravel sebagai API dan Next.js sebagai lapisan UI.',
+            'content' => '<h2>Apa itu Headless CMS?</h2><p>Headless CMS adalah sistem manajemen konten yang menyediakan konten melalui API, tanpa lapisan frontend bawaan. Hal ini memberikan kebebasan kepada developer untuk menggunakan framework frontend apapun sambil menjaga pengalaman manajemen konten tetap sederhana untuk editor.</p><h2>Mengapa Laravel + Next.js?</h2><p>Laravel unggul dalam membangun API yang kuat dengan fitur seperti Eloquent ORM, autentikasi bawaan (Sanctum), dan ekosistem yang sangat baik. Next.js, di sisi lain, menyediakan rendering sisi server, pembuatan situs statis, dan pengalaman developer yang luar biasa.</p><h2>Menyiapkan Laravel sebagai API</h2><p>Pertama, buat proyek Laravel baru dan konfigurasikan untuk mode API saja. Instal Sanctum untuk autentikasi dan siapkan model serta migrasi Anda.</p><pre><code>composer create-project laravel/laravel backend\ncd backend\nphp artisan install:api</code></pre><h2>Membangun Frontend Next.js</h2><p>Buat aplikasi Next.js Anda dan atur lapisan pengambilan data. Gunakan Komponen Server untuk halaman penting SEO dan Komponen Klien untuk elemen interaktif.</p><pre><code>npx create-next-app@latest frontend\ncd frontend\nnpm run dev</code></pre><h2>Kesimpulan</h2><p>Pendekatan headless memberi Anda yang terbaik dari kedua dunia: backend manajemen konten yang kuat dan frontend yang sangat cepat dan dioptimalkan untuk SEO. Ini adalah arsitektur masa depan.</p>',
             'cover_image' => null,
             'is_published' => true,
             'published_at' => '2026-06-10 10:00:00',
         ]);
 
         Post::create([
-            'title' => 'SEO Best Practices for React & Next.js Applications',
-            'slug' => 'seo-best-practices-react-nextjs',
-            'excerpt' => 'A comprehensive guide on optimizing single-page applications for search engines, AI crawlers, and achieving top Core Web Vitals scores.',
-            'content' => '<h2>The SEO Challenge with SPAs</h2><p>Single-page applications (SPAs) have historically struggled with SEO because search engine crawlers had difficulty indexing JavaScript-rendered content. Next.js solves this with Server-Side Rendering (SSR) and Static Site Generation (SSG).</p><h2>Essential Meta Tags</h2><p>Every page should have unique title tags, meta descriptions, and Open Graph tags. In Next.js, use the <code>generateMetadata</code> function for dynamic pages.</p><h2>JSON-LD Schema Markup</h2><p>Structured data helps search engines understand your content better. Implement Person, Article, and Organization schemas using JSON-LD format.</p><h2>Core Web Vitals</h2><p>Google uses Core Web Vitals as ranking signals. Focus on:</p><ul><li><strong>LCP (Largest Contentful Paint):</strong> Aim for under 2.5 seconds</li><li><strong>INP (Interaction to Next Paint):</strong> Aim for under 200ms</li><li><strong>CLS (Cumulative Layout Shift):</strong> Aim for under 0.1</li></ul><h2>AIO - AI Optimization</h2><p>As AI-powered search engines become more prevalent, consider creating a <code>llm.txt</code> file that provides a structured summary of your site for AI crawlers.</p>',
+            'title' => 'Praktik Terbaik SEO untuk Aplikasi React & Next.js',
+            'slug' => 'praktik-terbaik-seo-untuk-aplikasi-react-nextjs',
+            'excerpt' => 'Panduan komprehensif tentang pengoptimalan aplikasi halaman tunggal (SPA) untuk mesin telusur, crawler AI, dan mencapai skor Core Web Vitals tertinggi.',
+            'content' => '<h2>Tantangan SEO dengan SPA</h2><p>Aplikasi halaman tunggal (SPA) secara historis kesulitan dengan SEO karena crawler mesin pencari kesulitan mengindeks konten yang dirender JavaScript. Next.js menyelesaikan ini dengan Rendering Sisi Server (SSR) dan Pembuatan Situs Statis (SSG).</p><h2>Meta Tag Penting</h2><p>Setiap halaman harus memiliki tag judul yang unik, deskripsi meta, dan tag Open Graph. Di Next.js, gunakan fungsi <code>generateMetadata</code> untuk halaman dinamis.</p><h2>Markup Skema JSON-LD</h2><p>Data terstruktur membantu mesin pencari memahami konten Anda dengan lebih baik. Terapkan skema Orang, Artikel, dan Organisasi menggunakan format JSON-LD.</p><h2>Core Web Vitals</h2><p>Google menggunakan Core Web Vitals sebagai sinyal peringkat. Fokus pada:</p><ul><li><strong>LCP (Largest Contentful Paint):</strong> Targetkan kurang dari 2,5 detik</li><li><strong>INP (Interaction to Next Paint):</strong> Targetkan kurang dari 200 md</li><li><strong>CLS (Cumulative Layout Shift):</strong> Targetkan kurang dari 0,1</li></ul><h2>AIO - Optimasi AI</h2><p>Saat mesin telusur yang didukung AI menjadi lebih umum, pertimbangkan untuk membuat file <code>llm.txt</code> yang memberikan ringkasan terstruktur dari situs Anda untuk crawler AI.</p>',
             'cover_image' => null,
             'is_published' => true,
             'published_at' => '2026-06-05 14:30:00',
         ]);
 
         Post::create([
-            'title' => 'Building Beautiful UIs with GSAP Animations',
-            'slug' => 'building-beautiful-uis-gsap-animations',
-            'excerpt' => 'Discover how to use GSAP (GreenSock Animation Platform) to create smooth, professional animations that enhance user experience in your web applications.',
-            'content' => '<h2>Why GSAP?</h2><p>GSAP is the gold standard for web animations. It\'s fast, reliable, and works across all major browsers. Unlike CSS animations, GSAP gives you precise control over complex animation sequences.</p><h2>Getting Started</h2><pre><code>npm install gsap\nimport gsap from "gsap";\nimport { ScrollTrigger } from "gsap/ScrollTrigger";\ngsap.registerPlugin(ScrollTrigger);</code></pre><h2>Scroll-Triggered Animations</h2><p>One of the most popular patterns is revealing elements as users scroll down the page. With ScrollTrigger, this becomes trivial:</p><pre><code>gsap.from(".section-reveal", {\n  y: 50,\n  opacity: 0,\n  duration: 0.8,\n  scrollTrigger: {\n    trigger: ".section-reveal",\n    start: "top 85%",\n  },\n});</code></pre><h2>Performance Tips</h2><ul><li>Always animate <code>transform</code> and <code>opacity</code> properties for GPU acceleration</li><li>Use <code>will-change</code> sparingly</li><li>Clean up animations in React with <code>gsap.context()</code></li></ul>',
+            'title' => 'Membangun UI Indah dengan Animasi GSAP',
+            'slug' => 'membangun-ui-indah-dengan-animasi-gsap',
+            'excerpt' => 'Temukan cara menggunakan GSAP (Platform Animasi GreenSock) untuk membuat animasi yang halus dan profesional yang meningkatkan pengalaman pengguna dalam aplikasi web Anda.',
+            'content' => '<h2>Mengapa GSAP?</h2><p>GSAP adalah standar emas untuk animasi web. Cepat, andal, dan berfungsi di semua browser utama. Tidak seperti animasi CSS, GSAP memberi Anda kontrol yang tepat atas rangkaian animasi kompleks.</p><h2>Memulai</h2><pre><code>npm install gsap\nimport gsap from "gsap";\nimport { ScrollTrigger } from "gsap/ScrollTrigger";\ngsap.registerPlugin(ScrollTrigger);</code></pre><h2>Animasi Terpicu Gulir</h2><p>Salah satu pola paling populer adalah mengungkapkan elemen saat pengguna menggulir halaman ke bawah. Dengan ScrollTrigger, ini menjadi sepele:</p><pre><code>gsap.from(".section-reveal", {\n  y: 50,\n  opacity: 0,\n  duration: 0.8,\n  scrollTrigger: {\n    trigger: ".section-reveal",\n    start: "top 85%",\n  },\n});</code></pre><h2>Tips Kinerja</h2><ul><li>Selalu animasikan properti <code>transform</code> dan <code>opacity</code> untuk akselerasi GPU</li><li>Gunakan <code>will-change</code> seperlunya</li><li>Bersihkan animasi di React dengan <code>gsap.context()</code></li></ul>',
             'cover_image' => null,
             'is_published' => true,
             'published_at' => '2026-05-28 09:00:00',
@@ -192,7 +192,7 @@ class DummySeeder extends Seeder
         // SETTINGS
         // ============================================================
         Setting::create(['key' => 'site_name', 'group' => 'General Info', 'value' => 'Yakub Firman Mustofa']);
-        Setting::create(['key' => 'site_description', 'group' => 'General Info', 'value' => 'Web Developer & SEO Specialist based in Surakarta']);
+        Setting::create(['key' => 'site_description', 'group' => 'General Info', 'value' => 'Web Developer & SEO Specialist berdomisili di Surakarta']);
         Setting::create(['key' => 'contact_email', 'group' => 'General Info', 'value' => 'contact@yakubfirman.id']);
         Setting::create(['key' => 'github_url', 'group' => 'General Info', 'value' => 'https://github.com/yakubfirman']);
         Setting::create(['key' => 'linkedin_url', 'group' => 'General Info', 'value' => 'https://linkedin.com/in/yakubfirman']);
@@ -200,14 +200,14 @@ class DummySeeder extends Seeder
         Setting::create(['key' => 'header_image_url', 'group' => 'General Info', 'type' => 'string', 'value' => '/profile.jpg']);
 
         // Homepage Settings
-        Setting::create(['key' => 'home_cta_title', 'group' => 'Homepage - CTA Section', 'type' => 'string', 'value' => "Let's Build Something Amazing Together"]);
-        Setting::create(['key' => 'home_cta_description', 'group' => 'Homepage - CTA Section', 'type' => 'text', 'value' => 'Whether you need a full-stack web application, a boost in your search rankings, or a complete brand overhaul — I\'m here to help.']);
+        Setting::create(['key' => 'home_cta_title', 'group' => 'Homepage - CTA Section', 'type' => 'string', 'value' => "Mari Bangun Sesuatu yang Luar Biasa Bersama"]);
+        Setting::create(['key' => 'home_cta_description', 'group' => 'Homepage - CTA Section', 'type' => 'text', 'value' => 'Baik Anda membutuhkan aplikasi web full-stack, peningkatan peringkat pencarian, atau perombakan merek menyeluruh — saya di sini untuk membantu.']);
 
-        Setting::create(['key' => 'home_about_heading', 'group' => 'Homepage - About Section', 'type' => 'string', 'value' => 'Turning complex problems into elegant solutions!']);
-        Setting::create(['key' => 'home_about_text', 'group' => 'Homepage - About Section', 'type' => 'text', 'value' => "I'm a Computer Science graduate (2026) based in Surakarta, Central Java. I specialize in building robust Headless CMS architectures using Laravel and Next.js, bridging the gap between powerful backend logic and seamless frontend experiences.\n\nBeyond writing clean code, I'm deeply passionate about SEO and web performance. I also actively share my knowledge as a speaker at various tech seminars and workshops, focusing on frontend development and media literacy."]);
+        Setting::create(['key' => 'home_about_heading', 'group' => 'Homepage - About Section', 'type' => 'string', 'value' => 'Mengubah masalah kompleks menjadi solusi elegan!']);
+        Setting::create(['key' => 'home_about_text', 'group' => 'Homepage - About Section', 'type' => 'text', 'value' => "Saya lulusan Teknik Informatika (2026) yang berdomisili di Surakarta, Jawa Tengah. Saya berspesialisasi dalam membangun arsitektur Headless CMS yang kuat menggunakan Laravel dan Next.js, menjembatani logika backend yang kuat dan pengalaman frontend yang mulus.\n\nSelain menulis kode yang bersih, saya sangat bersemangat tentang SEO dan performa web. Saya juga aktif berbagi pengetahuan sebagai pembicara di berbagai seminar dan lokakarya teknologi, dengan fokus pada pengembangan frontend dan literasi media."]);
         
         // About Page Settings
-        Setting::create(['key' => 'about_page_heading', 'group' => 'About Page - Main Section', 'type' => 'string', 'value' => 'Who I Am']);
-        Setting::create(['key' => 'about_page_text', 'group' => 'About Page - Main Section', 'type' => 'text', 'value' => "I am Yakub Firman Mustofa, a passionate Web Developer and SEO Specialist based in Surakarta, Jawa Tengah. With a strong background in IT, I specialize in building high-performance web applications that not only look great but also rank well on search engines.\n\nMy approach combines technical excellence with strategic thinking. I believe in Headless CMS architectures, clean code, and user-centric design to deliver digital products that stand out."]);
+        Setting::create(['key' => 'about_page_heading', 'group' => 'About Page - Main Section', 'type' => 'string', 'value' => 'Siapa Saya']);
+        Setting::create(['key' => 'about_page_text', 'group' => 'About Page - Main Section', 'type' => 'text', 'value' => "Saya adalah Yakub Firman Mustofa, seorang Web Developer dan SEO Specialist yang berdomisili di Surakarta, Jawa Tengah. Dengan latar belakang TI yang kuat, saya mengkhususkan diri dalam membangun aplikasi web berkinerja tinggi yang tidak hanya terlihat bagus tetapi juga mendapat peringkat yang baik di mesin pencari.\n\nPendekatan saya menggabungkan keunggulan teknis dengan pemikiran strategis. Saya percaya pada arsitektur Headless CMS, kode yang rapi, dan desain yang berpusat pada pengguna untuk menghasilkan produk digital yang menonjol."]);
     }
 }
