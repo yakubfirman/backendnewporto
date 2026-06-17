@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'paths' => ['api/*'],
+    'paths' => ['api/*', '*'],
     'allowed_methods' => ['*'],
-    'allowed_origins' => explode(',', env('ALLOWED_ORIGINS', 'http://localhost:3000,https://yakubfirman.id')),
+    'allowed_origins' => ['*'],
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
     'exposed_headers' => [],
