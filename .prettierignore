@@ -1,0 +1,9 @@
+node_modules
+vendor
+dist
+build
+.env
+.env.local
+coverage
+storage
+bootstrap/cache
