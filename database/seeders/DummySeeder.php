@@ -242,6 +242,9 @@ class DummySeeder extends Seeder
         Setting::create(['key' => 'about_page_heading', 'group' => 'About Page - Main Section', 'type' => 'string', 'value' => 'Siapa Saya']);
         Setting::create(['key' => 'about_page_text', 'group' => 'About Page - Main Section', 'type' => 'text', 'value' => "Saya adalah Yakub Firman Mustofa, seorang Web Developer dan SEO Specialist yang berdomisili di Surakarta, Jawa Tengah. Dengan latar belakang TI yang kuat, saya mengkhususkan diri dalam membangun aplikasi web berkinerja tinggi yang tidak hanya terlihat bagus tetapi juga mendapat peringkat yang baik di mesin pencari.\n\nPendekatan saya menggabungkan keunggulan teknis dengan pemikiran strategis. Saya percaya pada arsitektur Headless CMS, kode yang rapi, dan desain yang berpusat pada pengguna untuk menghasilkan produk digital yang menonjol."]);
         Setting::create(['key' => 'stats_clients', 'group' => 'About Page - Main Section', 'type' => 'string', 'value' => '15+']);
+        Setting::create(['key' => 'about_fact_location', 'group' => 'About Page - Main Section', 'type' => 'string', 'value' => 'Surakarta, Jawa Tengah']);
+        Setting::create(['key' => 'about_fact_availability', 'group' => 'About Page - Main Section', 'type' => 'string', 'value' => 'Terbuka untuk bekerja']);
+        Setting::create(['key' => 'about_fact_focus', 'group' => 'About Page - Main Section', 'type' => 'string', 'value' => 'Full-stack & SEO']);
         
         // Footer Settings
         Setting::create(['key' => 'footer_text', 'group' => 'Footer Section', 'type' => 'text', 'value' => 'Seorang Pengembang Web Full-stack & Spesialis SEO yang penuh semangat, berdedikasi untuk membangun pengalaman digital berkinerja tinggi.']);
