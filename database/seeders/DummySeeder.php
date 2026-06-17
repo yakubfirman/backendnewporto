@@ -23,6 +23,7 @@ class DummySeeder extends Seeder
             'description' => 'Platform e-commerce berfitur lengkap yang dibangun dengan Next.js dan Laravel, menampilkan inventaris waktu nyata, integrasi gateway pembayaran, dan dasbor admin.',
             'content' => '<h2>Ikhtisar Proyek</h2><p>Platform e-commerce ini dibangun dari awal untuk menangani ribuan transaksi harian. Menampilkan arsitektur headless dengan Next.js untuk etalase dan Laravel sebagai API backend.</p><h2>Fitur Utama</h2><ul><li>Manajemen inventaris waktu nyata</li><li>Integrasi beberapa gateway pembayaran (Midtrans, Stripe)</li><li>Pencarian dan pemfilteran produk tingkat lanjut</li><li>Sistem ulasan dan peringkat pelanggan</li><li>Dasbor admin dengan analitik</li></ul><h2>Tantangan Teknis</h2><p>Salah satu tantangan utama adalah mengimplementasikan pembaruan stok waktu nyata di banyak pengguna bersamaan. Kami menyelesaikannya menggunakan penguncian tingkat database dan notifikasi WebSocket.</p>',
             'image' => null,
+            'categories' => ['Full Stack', 'Backend'],
             'tech_stack' => ['Next.js', 'Laravel', 'MySQL', 'Tailwind CSS', 'Midtrans'],
             'url' => 'https://example-shop.com',
             'github_url' => 'https://github.com/yakubfirman/ecommerce',
@@ -35,6 +36,7 @@ class DummySeeder extends Seeder
             'description' => 'Dasbor teknologi keuangan modern dengan visualisasi data waktu nyata, pemantauan transaksi, dan alat pelaporan komprehensif.',
             'content' => '<h2>Tentang Proyek Ini</h2><p>Dasbor fintech komprehensif yang dirancang untuk startup keuangan. Dasbor ini menyediakan pemantauan transaksi waktu nyata, analitik pengguna, dan laporan keuangan.</p><h2>Fitur</h2><ul><li>Pemantauan transaksi waktu nyata</li><li>Grafik interaktif dan visualisasi data</li><li>Kontrol akses berbasis peran</li><li>Pembuatan laporan otomatis (PDF/Excel)</li><li>Dukungan mode gelap</li></ul>',
             'image' => null,
+            'categories' => ['Frontend', 'Full Stack'],
             'tech_stack' => ['React', 'TypeScript', 'Chart.js', 'Node.js', 'PostgreSQL'],
             'url' => 'https://fintech-demo.com',
             'github_url' => null,
@@ -47,6 +49,7 @@ class DummySeeder extends Seeder
             'description' => 'Halaman landas SaaS berkonversi tinggi dengan optimasi SEO, mencapai skor PageSpeed 95+ dan peringkat 3 besar Google.',
             'content' => '<h2>Tujuan Proyek</h2><p>Klien membutuhkan halaman landas yang tidak hanya terlihat indah tetapi juga mendapat peringkat tinggi di Google untuk kata kunci target mereka. Kami memberikan halaman dengan skor 98 PageSpeed Insight.</p><h2>Strategi SEO</h2><ul><li>Struktur HTML5 semantik</li><li>Markup Skema JSON-LD</li><li>Core Web Vitals yang Dioptimalkan (LCP, FID, CLS)</li><li>Server-Side Rendering untuk pengiriman konten instan</li></ul>',
             'image' => null,
+            'categories' => ['Frontend', 'SEO & AIO'],
             'tech_stack' => ['Next.js', 'Tailwind CSS', 'Vercel', 'SEO'],
             'url' => 'https://saas-example.com',
             'github_url' => 'https://github.com/yakubfirman/saas-landing',
@@ -59,6 +62,7 @@ class DummySeeder extends Seeder
             'description' => 'Sistem point-of-sale untuk jaringan restoran dengan tampilan dapur, manajemen pesanan, dan pelaporan waktu nyata.',
             'content' => '<h2>Ikhtisar</h2><p>Membangun sistem POS kustom untuk jaringan restoran yang berkembang di Jawa Tengah. Sistem menangani manajemen pesanan, layar tampilan dapur, dan menghasilkan laporan keuangan harian.</p><h2>Fitur</h2><ul><li>Antarmuka pesanan yang dioptimalkan untuk layar sentuh</li><li>Sistem tampilan dapur (KDS)</li><li>Manajemen meja dan reservasi</li><li>Laporan penjualan dan inventaris harian</li><li>Dukungan multi-cabang</li></ul>',
             'image' => null,
+            'categories' => ['Full Stack', 'Backend'],
             'tech_stack' => ['Laravel', 'Vue.js', 'MySQL', 'Electron'],
             'url' => null,
             'github_url' => null,
@@ -71,6 +75,7 @@ class DummySeeder extends Seeder
             'description' => 'Desain ulang lengkap website perusahaan dengan UI modern, peningkatan UX, dan perombakan SEO komprehensif yang menghasilkan 3x lalu lintas organik.',
             'content' => '<h2>Tantangan</h2><p>Situs web lama klien tertinggal, lambat, dan hampir tidak terlihat di mesin pencari. Mereka membutuhkan perombakan total yang akan memodernisasi kehadiran online mereka dan mendorong lalu lintas organik.</p><h2>Hasil</h2><ul><li>Peningkatan 3x lalu lintas organik dalam 3 bulan</li><li>Skor PageSpeed meningkat dari 32 menjadi 96</li><li>Rasio pentalan menurun sebesar 45%</li><li>Rata-rata durasi sesi meningkat sebesar 60%</li></ul>',
             'image' => null,
+            'categories' => ['SEO & AIO', 'Frontend'],
             'tech_stack' => ['Next.js', 'Tailwind CSS', 'Laravel', 'SEO'],
             'url' => 'https://corporate-demo.com',
             'github_url' => null,
@@ -212,17 +217,12 @@ class DummySeeder extends Seeder
         ];
 
         foreach ($skills as $skill) {
-            $iconSvg = null;
-            try {
-                $iconSvg = @file_get_contents('https://raw.githubusercontent.com/glincker/thesvg/main/public/icons/' . $skill['svg_name'] . '/default.svg');
-            } catch (\Exception $e) {
-                // Ignore error and leave icon_svg null
-            }
+            $iconUrl = 'https://thesvg.org/icons/' . $skill['svg_name'] . '/default.svg';
 
             Skill::create([
                 'name' => $skill['name'],
                 'category' => $skill['category'],
-                'icon_svg' => $iconSvg ?: null,
+                'icon_svg' => $iconUrl,
                 'proficiency' => $skill['proficiency'],
             ]);
         }

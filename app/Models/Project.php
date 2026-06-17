@@ -10,6 +10,7 @@ class Project extends Model
     
     protected $casts = [
         'tech_stack' => 'array',
+        'categories' => 'array',
         'is_highlighted' => 'boolean',
     ];
 
