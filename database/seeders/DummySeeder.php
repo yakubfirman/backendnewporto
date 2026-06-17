@@ -198,24 +198,31 @@ class DummySeeder extends Seeder
         // SKILLS
         // ============================================================
         $skills = [
-            ['name' => 'JavaScript', 'category' => 'Frontend', 'proficiency' => 90],
-            ['name' => 'TypeScript', 'category' => 'Frontend', 'proficiency' => 85],
-            ['name' => 'PHP', 'category' => 'Backend', 'proficiency' => 95],
-            ['name' => 'Python', 'category' => 'Backend', 'proficiency' => 80],
-            ['name' => 'MySQL', 'category' => 'Database', 'proficiency' => 90],
-            ['name' => 'PostgreSQL', 'category' => 'Database', 'proficiency' => 85],
-            ['name' => 'ReactJs', 'category' => 'Frontend', 'proficiency' => 88],
-            ['name' => 'NextJs', 'category' => 'Frontend', 'proficiency' => 85],
-            ['name' => 'Laravel', 'category' => 'Backend', 'proficiency' => 95],
-            ['name' => 'Codeigniter', 'category' => 'Backend', 'proficiency' => 85],
-            ['name' => 'Flask', 'category' => 'Backend', 'proficiency' => 80],
+            ['name' => 'JavaScript', 'category' => 'Frontend', 'proficiency' => 90, 'svg_name' => 'javascript'],
+            ['name' => 'TypeScript', 'category' => 'Frontend', 'proficiency' => 85, 'svg_name' => 'typescript'],
+            ['name' => 'PHP', 'category' => 'Backend', 'proficiency' => 95, 'svg_name' => 'php'],
+            ['name' => 'Python', 'category' => 'Backend', 'proficiency' => 80, 'svg_name' => 'python'],
+            ['name' => 'MySQL', 'category' => 'Database', 'proficiency' => 90, 'svg_name' => 'mysql'],
+            ['name' => 'PostgreSQL', 'category' => 'Database', 'proficiency' => 85, 'svg_name' => 'postgresql'],
+            ['name' => 'ReactJs', 'category' => 'Frontend', 'proficiency' => 88, 'svg_name' => 'react'],
+            ['name' => 'NextJs', 'category' => 'Frontend', 'proficiency' => 85, 'svg_name' => 'nextdotjs'],
+            ['name' => 'Laravel', 'category' => 'Backend', 'proficiency' => 95, 'svg_name' => 'laravel'],
+            ['name' => 'Codeigniter', 'category' => 'Backend', 'proficiency' => 85, 'svg_name' => 'codeigniter'],
+            ['name' => 'Flask', 'category' => 'Backend', 'proficiency' => 80, 'svg_name' => 'flask'],
         ];
 
         foreach ($skills as $skill) {
+            $iconSvg = null;
+            try {
+                $iconSvg = @file_get_contents('https://raw.githubusercontent.com/glincker/thesvg/main/public/icons/' . $skill['svg_name'] . '/default.svg');
+            } catch (\Exception $e) {
+                // Ignore error and leave icon_svg null
+            }
+
             Skill::create([
                 'name' => $skill['name'],
                 'category' => $skill['category'],
-                'icon_svg' => null,
+                'icon_svg' => $iconSvg ?: null,
                 'proficiency' => $skill['proficiency'],
             ]);
         }
