@@ -27,12 +27,12 @@ class SocialMediaController extends Controller
         return response()->json($socialMedia, 201);
     }
 
-    public function show(SocialMedia $socialMedia)
+    public function show(SocialMedia $socialMedium)
     {
-        return response()->json($socialMedia);
+        return response()->json($socialMedium);
     }
 
-    public function update(Request $request, SocialMedia $socialMedia)
+    public function update(Request $request, SocialMedia $socialMedium)
     {
         $data = $request->validate([
             'name' => 'sometimes|required|string|max:255',
@@ -42,13 +42,13 @@ class SocialMediaController extends Controller
             'order' => 'integer',
         ]);
 
-        $socialMedia->update($data);
-        return response()->json($socialMedia);
+        $socialMedium->update($data);
+        return response()->json($socialMedium);
     }
 
-    public function destroy(SocialMedia $socialMedia)
+    public function destroy(SocialMedia $socialMedium)
     {
-        $socialMedia->delete();
+        $socialMedium->delete();
         return response()->json(null, 204);
     }
 }
