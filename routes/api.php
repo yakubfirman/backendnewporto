@@ -11,7 +11,7 @@ use App\Models\Setting;
 use App\Models\Message;
 
 // Auth Routes
-Route::post('/admin/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
+Route::middleware('throttle:5,1')->post('/admin/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
 
 // Admin Protected Routes
 Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
@@ -106,7 +106,7 @@ Route::get('/posts/{slug}', function (Request $request, $slug) {
     return $post;
 });
 
-Route::post('/posts/{post}/comments', function (Request $request, $id) {
+Route::middleware('throttle:10,1')->post('/posts/{post}/comments', function (Request $request, $id) {
     $post = App\Models\Post::findOrFail($id);
     $validated = $request->validate([
         'name' => 'required|string|max:255',
@@ -118,7 +118,7 @@ Route::post('/posts/{post}/comments', function (Request $request, $id) {
     return $post->comments()->create($validated);
 });
 
-Route::post('/posts/{post}/like', function ($id) {
+Route::middleware('throttle:20,1')->post('/posts/{post}/like', function ($id) {
     $post = App\Models\Post::findOrFail($id);
     $post->increment('likes');
     return response()->json(['likes' => $post->likes]);
@@ -144,9 +144,9 @@ Route::get('/settings', function () {
 
 // Testimonials Public Routes
 Route::get('/testimonials', [App\Http\Controllers\Api\TestimonialController::class, 'index']);
-Route::post('/testimonials', [App\Http\Controllers\Api\TestimonialController::class, 'store']);
+Route::middleware('throttle:3,60')->post('/testimonials', [App\Http\Controllers\Api\TestimonialController::class, 'store']);
 
-Route::post('/messages', function (Request $request) {
+Route::middleware('throttle:3,60')->post('/messages', function (Request $request) {
     $validated = $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email|max:255',

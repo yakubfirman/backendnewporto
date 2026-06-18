@@ -5,6 +5,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+
 class UploadController extends Controller
 {
     public function upload(Request $request)
@@ -14,7 +17,31 @@ class UploadController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('uploads', 'public');
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            
+            // If it's SVG, just store it normally (can't compress SVG with GD)
+            if (strtolower($extension) === 'svg') {
+                $path = $file->store('uploads', 'public');
+            } else {
+                // Initialize ImageManager
+                $manager = new ImageManager(new Driver());
+                $image = $manager->read($file);
+                
+                // Scale down if width > 1200
+                $image->scaleDown(width: 1200);
+                
+                // Convert to webp with 80% quality
+                $encoded = $image->toWebp(80);
+                
+                // Generate unique filename
+                $filename = uniqid('img_') . '_' . time() . '.webp';
+                $path = 'uploads/' . $filename;
+                
+                // Save to storage
+                Storage::disk('public')->put($path, $encoded->toString());
+            }
+
             $url = Storage::url($path);
             return response()->json([
                 'url' => $request->getSchemeAndHttpHost() . $url,
