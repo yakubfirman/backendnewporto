@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::apiResource('experiences', App\Http\Controllers\Api\ExperienceController::class);
     Route::apiResource('educations', App\Http\Controllers\Api\EducationController::class);
     Route::apiResource('skills', App\Http\Controllers\Api\SkillController::class);
+    Route::apiResource('social-media', App\Http\Controllers\Api\SocialMediaController::class);
     Route::apiResource('settings', App\Http\Controllers\Api\SettingController::class);
     Route::apiResource('messages', App\Http\Controllers\Api\MessageController::class);
     
@@ -94,6 +95,10 @@ Route::get('/education', function () {
 });
 Route::get('/skills', function () {
     return Skill::all();
+});
+
+Route::get('/social-media', function () {
+    return \App\Models\SocialMedia::where('is_active', true)->orderBy('order', 'asc')->get();
 });
 
 Route::get('/settings', function () {
