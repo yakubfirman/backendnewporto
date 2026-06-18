@@ -153,5 +153,17 @@ Route::middleware('throttle:3,60')->post('/messages', function (Request $request
         'subject' => 'nullable|string|max:255',
         'content' => 'required|string',
     ]);
-    return Message::create($validated);
+
+    $message = Message::create($validated);
+
+    // Kirim email notifikasi ke pemilik web
+    try {
+        \Illuminate\Support\Facades\Mail::to(env('MAIL_FROM_ADDRESS'))
+            ->send(new \App\Mail\ContactMessageReceived($message));
+    } catch (\Exception $e) {
+        // Catat error di log server agar pengguna frontend tidak melihat pesan error teknis
+        \Illuminate\Support\Facades\Log::error('Gagal mengirim email kontak: ' . $e->getMessage());
+    }
+
+    return response()->json($message, 201);
 });
