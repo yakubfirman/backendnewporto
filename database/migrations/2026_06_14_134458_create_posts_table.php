@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('author')->default('Yakub Firman Mustofa');
             $table->string('slug')->unique();
             $table->text('excerpt')->nullable();
             $table->longText('content');
             $table->string('cover_image')->nullable();
+            $table->unsignedInteger('likes')->default(0);
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

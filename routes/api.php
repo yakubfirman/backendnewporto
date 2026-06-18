@@ -52,10 +52,14 @@ Route::get('/projects/{slug}', function ($slug) {
 Route::get('/posts', function () {
     return App\Models\Post::where('is_published', true)->orderBy('published_at', 'desc')->get();
 });
-Route::get('/posts/{slug}', function ($slug) {
-    return App\Models\Post::where('slug', $slug)
-        ->where('is_published', true)
-        ->withCount(['comments' => function ($query) {
+Route::get('/posts/{slug}', function (Request $request, $slug) {
+    $query = App\Models\Post::where('slug', $slug);
+    
+    if ($request->query('preview') !== 'true') {
+        $query->where('is_published', true);
+    }
+
+    return $query->withCount(['comments' => function ($query) {
             $query->where('is_approved', true);
         }])
         ->with(['comments' => function ($query) {

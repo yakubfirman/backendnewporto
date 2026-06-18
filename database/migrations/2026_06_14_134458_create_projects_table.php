@@ -16,9 +16,12 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description');
+            $table->longText('content')->nullable();
             $table->string('image')->nullable();
             $table->json('tech_stack')->nullable();
+            $table->json('categories')->nullable();
             $table->string('url')->nullable();
+            $table->string('github_url')->nullable();
             $table->boolean('is_highlighted')->default(false);
             $table->timestamps();
         });

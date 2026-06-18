@@ -24,7 +24,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            DummySeeder::class,
+            ProjectSeeder::class,
+            ExperienceSeeder::class,
+            EducationSeeder::class,
+            PostSeeder::class,
+            SkillSeeder::class,
+            SettingSeeder::class,
         ]);
     }
 }

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
+            $table->enum('type', ['work', 'organization', 'speaker'])->default('work');
             $table->string('title');
             $table->string('company');
             $table->text('description')->nullable();
