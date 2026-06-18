@@ -40,6 +40,27 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::delete('/comments/{id}', [App\Http\Controllers\Api\CommentController::class, 'destroy']);
 
     Route::post('/upload', [App\Http\Controllers\Api\UploadController::class, 'upload']);
+
+    // Analytics Admin Route
+    Route::get('/analytics', function () {
+        $posts = App\Models\Post::withCount(['comments' => function ($query) {
+            $query->where('is_approved', true);
+        }])->orderBy('views', 'desc')->get();
+
+        $totalViews = $posts->sum('views');
+        $totalLikes = $posts->sum('likes');
+        $totalComments = $posts->sum('comments_count');
+
+        return response()->json([
+            'overview' => [
+                'total_views' => $totalViews,
+                'total_likes' => $totalLikes,
+                'total_comments' => $totalComments,
+                'total_posts' => $posts->count(),
+            ],
+            'posts' => $posts
+        ]);
+    });
 });
 
 // Public Routes (for frontend)
@@ -59,7 +80,7 @@ Route::get('/posts/{slug}', function (Request $request, $slug) {
         $query->where('is_published', true);
     }
 
-    return $query->withCount(['comments' => function ($query) {
+    $post = $query->withCount(['comments' => function ($query) {
             $query->where('is_approved', true);
         }])
         ->with(['comments' => function ($query) {
@@ -71,6 +92,12 @@ Route::get('/posts/{slug}', function (Request $request, $slug) {
                   ->orderBy('created_at', 'desc');
         }])
         ->firstOrFail();
+
+    if ($request->query('preview') !== 'true') {
+        $post->increment('views');
+    }
+
+    return $post;
 });
 
 Route::post('/posts/{post}/comments', function (Request $request, $id) {
