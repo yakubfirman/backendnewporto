@@ -18,6 +18,10 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout']);
     Route::get('/me', [App\Http\Controllers\Api\AuthController::class, 'me']);
 
+    // Reorder routes MUST come before apiResource to avoid route conflicts
+    Route::post('/projects/reorder', [App\Http\Controllers\Api\ProjectController::class, 'reorder']);
+    Route::post('/skills/reorder', [App\Http\Controllers\Api\SkillController::class, 'reorder']);
+
     Route::apiResource('projects', App\Http\Controllers\Api\ProjectController::class);
     Route::apiResource('posts', App\Http\Controllers\Api\PostController::class);
     Route::apiResource('experiences', App\Http\Controllers\Api\ExperienceController::class);
@@ -26,7 +30,7 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::apiResource('social-media', App\Http\Controllers\Api\SocialMediaController::class);
     Route::apiResource('settings', App\Http\Controllers\Api\SettingController::class);
     Route::apiResource('messages', App\Http\Controllers\Api\MessageController::class);
-    
+
     // Testimonial Admin Routes
     Route::get('/testimonials', [App\Http\Controllers\Api\TestimonialController::class, 'adminIndex']);
     Route::get('/testimonials/{id}', [App\Http\Controllers\Api\TestimonialController::class, 'show']);
@@ -40,6 +44,8 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::delete('/comments/{id}', [App\Http\Controllers\Api\CommentController::class, 'destroy']);
 
     Route::post('/upload', [App\Http\Controllers\Api\UploadController::class, 'upload']);
+    Route::get('/media', [App\Http\Controllers\Api\UploadController::class, 'index']);
+    Route::delete('/media', [App\Http\Controllers\Api\UploadController::class, 'destroy']);
 
     // Analytics Admin Route
     Route::get('/analytics', function () {
@@ -65,7 +71,7 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
 
 // Public Routes (for frontend)
 Route::get('/projects', function () {
-    return App\Models\Project::orderBy('created_at', 'desc')->get();
+    return App\Models\Project::orderBy('order', 'asc')->orderBy('created_at', 'desc')->get();
 });
 Route::get('/projects/{slug}', function ($slug) {
     return App\Models\Project::where('slug', $slug)->firstOrFail();
@@ -125,7 +131,7 @@ Route::get('/education', function () {
     return App\Models\Education::orderBy('start_date', 'desc')->get();
 });
 Route::get('/skills', function () {
-    return Skill::all();
+    return Skill::orderBy('order', 'asc')->orderBy('category')->get();
 });
 
 Route::get('/social-media', function () {

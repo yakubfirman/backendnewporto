@@ -9,7 +9,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        return response()->json(Project::orderBy('created_at', 'desc')->get());
+        return response()->json(Project::orderBy('order', 'asc')->orderBy('created_at', 'desc')->get());
     }
 
     public function store(Request $request)
@@ -25,6 +25,9 @@ class ProjectController extends Controller
             'url' => 'nullable|url',
             'github_url' => 'nullable|url',
             'is_highlighted' => 'boolean',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
+            'order' => 'nullable|integer',
         ]);
 
         $project = Project::create($data);
@@ -49,6 +52,9 @@ class ProjectController extends Controller
             'url' => 'nullable|url',
             'github_url' => 'nullable|url',
             'is_highlighted' => 'boolean',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string',
+            'order' => 'nullable|integer',
         ]);
 
         $project->update($data);
@@ -59,5 +65,18 @@ class ProjectController extends Controller
     {
         $project->delete();
         return response()->json(null, 204);
+    }
+
+    public function reorder(Request $request)
+    {
+        $items = $request->validate([
+            'items' => 'required|array',
+            'items.*.id' => 'required|integer',
+            'items.*.order' => 'required|integer',
+        ]);
+        foreach ($items['items'] as $item) {
+            Project::where('id', $item['id'])->update(['order' => $item['order']]);
+        }
+        return response()->json(['message' => 'Reordered successfully']);
     }
 }

@@ -13,7 +13,7 @@ class SkillController extends Controller
      */
     public function index()
     {
-        return response()->json(Skill::orderBy('category')->orderBy('proficiency', 'desc')->get());
+        return response()->json(Skill::orderBy('order', 'asc')->orderBy('category')->get());
     }
 
     public function store(Request $request)
@@ -23,6 +23,7 @@ class SkillController extends Controller
             'icon_svg' => 'nullable|string',
             'category' => 'nullable|string|max:255',
             'proficiency' => 'required|integer|min:0|max:100',
+            'order' => 'nullable|integer',
         ]);
 
         $skill = Skill::create($data);
@@ -41,6 +42,7 @@ class SkillController extends Controller
             'icon_svg' => 'nullable|string',
             'category' => 'nullable|string|max:255',
             'proficiency' => 'sometimes|required|integer|min:0|max:100',
+            'order' => 'nullable|integer',
         ]);
 
         $skill->update($data);
@@ -51,5 +53,18 @@ class SkillController extends Controller
     {
         $skill->delete();
         return response()->json(null, 204);
+    }
+
+    public function reorder(Request $request)
+    {
+        $items = $request->validate([
+            'items' => 'required|array',
+            'items.*.id' => 'required|integer',
+            'items.*.order' => 'required|integer',
+        ]);
+        foreach ($items['items'] as $item) {
+            Skill::where('id', $item['id'])->update(['order' => $item['order']]);
+        }
+        return response()->json(['message' => 'Reordered successfully']);
     }
 }
