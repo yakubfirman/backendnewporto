@@ -43,6 +43,9 @@ class UploadController extends Controller
             }
 
             $url = Storage::url($path);
+            if (!str_starts_with($url, 'http')) {
+                $url = rtrim($request->getSchemeAndHttpHost(), '/') . '/' . ltrim($url, '/');
+            }
             return response()->json([
                 'url' => $url,
                 'path' => $path,
@@ -56,11 +59,15 @@ class UploadController extends Controller
     public function index(Request $request)
     {
         $files = Storage::disk('public')->files('uploads');
-        $media = collect($files)->map(function ($file) {
+        $media = collect($files)->map(function ($file) use ($request) {
+            $url = Storage::url($file);
+            if (!str_starts_with($url, 'http')) {
+                $url = rtrim($request->getSchemeAndHttpHost(), '/') . '/' . ltrim($url, '/');
+            }
             return [
                 'filename' => basename($file),
                 'path' => $file,
-                'url' => Storage::url($file),
+                'url' => $url,
                 'size' => Storage::disk('public')->size($file),
                 'last_modified' => Storage::disk('public')->lastModified($file),
             ];
