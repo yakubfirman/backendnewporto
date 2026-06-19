@@ -47,6 +47,8 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::get('/media', [App\Http\Controllers\Api\UploadController::class, 'index']);
     Route::delete('/media', [App\Http\Controllers\Api\UploadController::class, 'destroy']);
     Route::post('/media/bulk-delete', [App\Http\Controllers\Api\UploadController::class, 'bulkDestroy']);
+    Route::post('/media/folder', [App\Http\Controllers\Api\UploadController::class, 'createFolder']);
+    Route::delete('/media/folder', [App\Http\Controllers\Api\UploadController::class, 'destroyFolder']);
 
     // Analytics Admin Route
     Route::get('/analytics', function () {
