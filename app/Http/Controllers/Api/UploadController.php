@@ -44,7 +44,7 @@ class UploadController extends Controller
 
             $url = Storage::url($path);
             return response()->json([
-                'url' => $request->getSchemeAndHttpHost() . $url,
+                'url' => $url,
                 'path' => $path,
                 'filename' => basename($path),
             ], 200);
@@ -56,11 +56,11 @@ class UploadController extends Controller
     public function index(Request $request)
     {
         $files = Storage::disk('public')->files('uploads');
-        $media = collect($files)->map(function ($file) use ($request) {
+        $media = collect($files)->map(function ($file) {
             return [
                 'filename' => basename($file),
                 'path' => $file,
-                'url' => $request->getSchemeAndHttpHost() . Storage::url($file),
+                'url' => Storage::url($file),
                 'size' => Storage::disk('public')->size($file),
                 'last_modified' => Storage::disk('public')->lastModified($file),
             ];
