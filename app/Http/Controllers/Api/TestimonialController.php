@@ -25,6 +25,7 @@ class TestimonialController extends Controller
             'name' => 'required|string|max:255',
             'role' => 'nullable|string|max:255',
             'content' => 'required|string',
+            'image' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
@@ -35,6 +36,7 @@ class TestimonialController extends Controller
             'name' => $request->name,
             'role' => $request->role,
             'content' => $request->content,
+            'image' => $request->image,
             'is_published' => false, // Always false by default when submitted by user
         ]);
 
@@ -70,6 +72,7 @@ class TestimonialController extends Controller
             'name' => 'sometimes|required|string|max:255',
             'role' => 'nullable|string|max:255',
             'content' => 'sometimes|required|string',
+            'image' => 'nullable|string',
             'is_published' => 'boolean',
         ]);
 

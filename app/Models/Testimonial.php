@@ -13,6 +13,7 @@ class Testimonial extends Model
         'name',
         'role',
         'content',
+        'image',
         'is_published',
     ];
 

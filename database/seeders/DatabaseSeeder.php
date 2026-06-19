@@ -30,6 +30,9 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             SkillSeeder::class,
             SettingSeeder::class,
+            SocialMediaSeeder::class,
+            TestimonialSeeder::class,
+            CommentSeeder::class,
         ]);
     }
 }
