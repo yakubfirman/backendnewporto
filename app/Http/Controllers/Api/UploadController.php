@@ -88,4 +88,35 @@ class UploadController extends Controller
         }
         return response()->json(['message' => 'File not found'], 404);
     }
+
+    public function bulkDestroy(Request $request)
+    {
+        $request->validate([
+            'paths'   => 'required|array|min:1',
+            'paths.*' => 'required|string',
+        ]);
+
+        $paths   = $request->input('paths');
+        $deleted = 0;
+        $missing = 0;
+
+        foreach ($paths as $path) {
+            if (!$path || !str_starts_with($path, 'uploads/')) {
+                $missing++;
+                continue;
+            }
+            if (Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->delete($path);
+                $deleted++;
+            } else {
+                $missing++;
+            }
+        }
+
+        return response()->json([
+            'message' => "Deleted {$deleted} file(s).",
+            'deleted' => $deleted,
+            'missing' => $missing,
+        ]);
+    }
 }
