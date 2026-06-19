@@ -34,40 +34,58 @@ class UploadController extends Controller
         $basePath = $this->getBasePath($request);
 
         if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            
-            // If it's SVG, just store it normally (can't compress SVG with GD)
-            if (strtolower($extension) === 'svg') {
-                $path = $file->store($basePath, 'public');
-            } else {
-                // Initialize ImageManager
-                $manager = new ImageManager(new Driver());
-                $image = $manager->read($file);
+            try {
+                $file = $request->file('image');
+                $extension = $file->getClientOriginalExtension();
                 
-                // Scale down if width > 1200
-                $image->scaleDown(width: 1200);
-                
-                // Convert to webp with 80% quality
-                $encoded = $image->toWebp(80);
-                
-                // Generate unique filename
-                $filename = uniqid('img_') . '_' . time() . '.webp';
-                $path = $basePath . '/' . $filename;
-                
-                // Save to storage
-                Storage::disk('public')->put($path, $encoded->toString());
-            }
+                // If it's SVG, just store it normally (can't compress SVG with GD)
+                if (strtolower($extension) === 'svg') {
+                    $path = $file->store($basePath, 'public');
+                } else {
+                    try {
+                        // Initialize ImageManager
+                        $manager = new ImageManager(new Driver());
+                        $image = $manager->read($file);
+                        
+                        // Scale down if width > 1200
+                        $image->scaleDown(width: 1200);
+                        
+                        // Convert to webp with 80% quality
+                        $encoded = $image->toWebp(80);
+                        
+                        // Generate unique filename
+                        $filename = uniqid('img_') . '_' . time() . '.webp';
+                        $path = $basePath . '/' . $filename;
+                        
+                        // Save to storage
+                        Storage::disk('public')->put($path, $encoded->toString());
+                    } catch (\Exception $e) {
+                        // Fallback if GD is missing, or WebP is not supported by GD, or invalid image
+                        \Illuminate\Support\Facades\Log::warning("Image processing failed: " . $e->getMessage() . " - Falling back to direct upload.");
+                        
+                        // Use original extension or fallback to webp if it came from canvas
+                        $ext = $extension ?: 'webp'; 
+                        $filename = uniqid('img_') . '_' . time() . '.' . $ext;
+                        $path = $basePath . '/' . $filename;
+                        
+                        // Save directly without processing
+                        Storage::disk('public')->put($path, $file->get());
+                    }
+                }
 
-            $url = Storage::url($path);
-            if (!str_starts_with($url, 'http')) {
-                $url = rtrim($request->getSchemeAndHttpHost(), '/') . '/' . ltrim($url, '/');
+                $url = Storage::url($path);
+                if (!str_starts_with($url, 'http')) {
+                    $url = rtrim($request->getSchemeAndHttpHost(), '/') . '/' . ltrim($url, '/');
+                }
+                return response()->json([
+                    'url' => $url,
+                    'path' => $path,
+                    'filename' => basename($path),
+                ], 200);
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::error("Upload endpoint failed: " . $e->getMessage());
+                return response()->json(['message' => 'Upload failed on server: ' . $e->getMessage()], 500);
             }
-            return response()->json([
-                'url' => $url,
-                'path' => $path,
-                'filename' => basename($path),
-            ], 200);
         }
 
         return response()->json(['message' => 'No image uploaded'], 400);
