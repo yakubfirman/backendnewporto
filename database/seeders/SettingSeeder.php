@@ -18,6 +18,7 @@ class SettingSeeder extends Seeder
         Setting::create(['key' => 'profile_image_url', 'group' => 'General Info', 'type' => 'string', 'value' => '/about.jpg']);
         Setting::create(['key' => 'header_image_url', 'group' => 'General Info', 'type' => 'string', 'value' => '/profile.jpg']);
         Setting::create(['key' => 'og_image_url', 'group' => 'General Info', 'type' => 'string', 'value' => '']);
+        Setting::create(['key' => 'favicon_image_url', 'group' => 'General Info', 'type' => 'string', 'value' => '/icons/icon-192x192.png']);
 
         // Homepage Settings
         Setting::create(['key' => 'home_cta_title', 'group' => 'Homepage - CTA Section', 'type' => 'string', 'value' => "Mari Bangun Sesuatu yang Luar Biasa Bersama"]);
