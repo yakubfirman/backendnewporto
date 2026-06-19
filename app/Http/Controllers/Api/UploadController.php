@@ -59,7 +59,7 @@ class UploadController extends Controller
                         
                         // Save to storage
                         Storage::disk('public')->put($path, $encoded->toString());
-                    } catch (\Exception $e) {
+                    } catch (\Throwable $e) {
                         // Fallback if GD is missing, or WebP is not supported by GD, or invalid image
                         \Illuminate\Support\Facades\Log::warning("Image processing failed: " . $e->getMessage() . " - Falling back to direct upload.");
                         
@@ -82,7 +82,7 @@ class UploadController extends Controller
                     'path' => $path,
                     'filename' => basename($path),
                 ], 200);
-            } catch (\Exception $e) {
+            } catch (\Throwable $e) {
                 \Illuminate\Support\Facades\Log::error("Upload endpoint failed: " . $e->getMessage());
                 return response()->json(['message' => 'Upload failed on server: ' . $e->getMessage()], 500);
             }
